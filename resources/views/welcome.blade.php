@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    GESTIÓN ESCUELA-EMPRESA TEST
                 </div>
 
                 <div class="links">
