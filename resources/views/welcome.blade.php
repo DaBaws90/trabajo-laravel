@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    GESTIÓN ESCUELA-EMPRESA TEST
+                    GESTIÓN ESCUELA-EMPRESA TEST 2
                 </div>
 
                 <div class="links">
