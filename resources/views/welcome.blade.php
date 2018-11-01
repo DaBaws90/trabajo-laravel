@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    GESTIÓN ESCUELA-EMPRESA TEST 2 SEXY MUY SEXY
+                    GESTIÓN ESCUELA-EMPRESA TEST 2 SEX
                 </div>
 
                 <div class="links">
