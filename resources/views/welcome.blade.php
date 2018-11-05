@@ -61,6 +61,8 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                font-size: 42px;
+                font-weight: bold;
             }
         </style>
     </head>
@@ -79,16 +81,20 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Gestión de peticiones empresariales
                 </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                @auth
+                    <p>Comenzar a gestionar registros</p>
+                @else
+                    <p>Por favor, inicie sesión para gestionar los registros.</p>
+                <!--<div class="links">
+                    <a href="{{ url('/students') }}">Estudiantes</a>
+                    <a href="{{ url('/companies') }}">Empresas</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> -->
+                @endauth
             </div>
         </div>
     </body>
