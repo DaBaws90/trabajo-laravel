@@ -7,12 +7,12 @@
         @forelse($students as $student)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
-                <a href="students/{{ $student->id }}"> {{ $student->name }} </a>
+                <a href="students/{{ $student->id }}"> {{ $student->name }} {{ $student->lastname }} </a>
                 
                 
             </div>
             <div class="panel-body">
-                {{ $student->age }}
+                Edad : {{ $student->age }}
             </div>
         </div>
         @empty

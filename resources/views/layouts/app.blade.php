@@ -70,7 +70,18 @@
                 </div>
             </div>
         </nav>
-
+        @if(session('message'))
+            @if(session('message')[0] == 'success')
+            <div class="alert alert-{{ session('message')[0] }}">
+                {{ session('message')[1] }}
+            </div>
+            @else
+            <div class="alert alert-danger fade in">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                Se produjo un error en el momento de añadir el estudiante
+            </div>
+            @endif
+        @endif
         @yield('content')
     </div>
 

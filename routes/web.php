@@ -18,7 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Estudiantes
 Route::get('/students', 'StudentController@index');
+Route::post('/students', 'StudentController@store');
+
+//Empresas
+Route::get('/companies', 'CompanyController@index');
+Route::post('/companies', 'CompanyController@store');
+
 /*Route::get('/students', function(){
     return view('students');
 });*/

@@ -12,4 +12,14 @@ class StudentController extends Controller
         //dd($students);
         return view('students.index',compact("students"));
     }
+
+    public function store(){
+        $this->validate(request(),[
+            'name'=>'required|max:20',
+            'lastname'=>'required|max:50',
+            'age'=>'required'
+        ]);
+        Student::create(request()->all());
+        return back()->with('message', ['success', __('Estudiante creado correctamente')]);
+    }
 }
