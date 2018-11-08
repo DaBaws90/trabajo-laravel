@@ -8,8 +8,6 @@
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
                 <a href="companies/{{ $company->id }}"> {{ $company->name }} </a>
-                
-                
             </div>
             <div class="panel-body">
                 {{ $company->city }} - {{ $company->cp }}
