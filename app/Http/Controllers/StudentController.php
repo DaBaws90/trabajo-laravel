@@ -13,6 +13,11 @@ class StudentController extends Controller
         return view('students.index',compact("students"));
     }
 
+    public function details(Student $student){
+        //dd($student);
+        return view('students.detail', compact("student"));
+    }
+
     public function store(){
         $this->validate(request(),[
             'name'=>'required|max:20',
@@ -22,4 +27,5 @@ class StudentController extends Controller
         Student::create(request()->all());
         return back()->with('message', ['success', __('Estudiante creado correctamente')]);
     }
+
 }
