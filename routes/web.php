@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/students', 'StudentController@index');
 Route::post('/students', 'StudentController@store');
 Route::get('/students/{student}', 'StudentController@details');
-Route::get('/students/edit/{id}', 'StudentController@edit');
+Route::get('/students/edit/{id}', 'StudentController@edit')->name('editStudent');
 //Route::post('/students/edit/{id}', 'StudentController@');
 
 //Empresas
