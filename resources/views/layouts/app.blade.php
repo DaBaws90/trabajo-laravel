@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Escuela empresa') }}
                     </a>
                 </div>
 
@@ -72,13 +72,13 @@
         </nav>
         @if(session('message'))
             @if(session('message')[0] == 'success')
-            <div class="alert alert-{{ session('message')[0] }}">
+            <div style="text-align:center" class="alert alert-{{ session('message')[0] }}">
                 {{ session('message')[1] }}
             </div>
             @else
-            <div class="alert alert-danger fade in">
+            <div style="text-align:center" class="alert alert-danger fade in">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
-                Se produjo un error en el momento de añadir el estudiante
+                Se produjo un error al realizar la operación
             </div>
             @endif
         @endif

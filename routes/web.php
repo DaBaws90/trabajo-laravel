@@ -22,8 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Estudiantes
 Route::get('/students', 'StudentController@index');
 Route::post('/students', 'StudentController@store');
-Route::get('/students/{student}', 'StudentController@details');
-Route::get('/students/edit/{id}', 'StudentController@edit')->name('editStudent');
+Route::get('/students/{student}', 'StudentController@details')->name('details');
+Route::get('/students/edit/{student}', 'StudentController@editView')->name('editView');
+Route::post('/students/edit/{student}', 'StudentController@editStudent')->name('editStudent');
+Route::get('/students/delete/{student}', 'StudentController@delete')->name('deleteStudent');
 //Route::post('/students/edit/{id}', 'StudentController@');
 
 //Empresas

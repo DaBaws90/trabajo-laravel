@@ -19,6 +19,8 @@
             </div>
         </div>
     </div>
+    @auth
+    <?php header("Refresh:4; url='.'"); ?>
     <div class="content">
         <div class="row">
             <div class="col-md-8 offset-md-8">
@@ -32,5 +34,6 @@
             </div>
         </div>
     </div>
+    @endauth
 </div>
 @endsection

@@ -69,7 +69,14 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -79,12 +86,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Escuela Empresa
                 </div>
                 @auth
                     <p>Comenzar a gestionar registros</p>
                 @else
-                    <p>Por favor, inicie sesión para gestionar los registros.</p>
+                @include("partials.login_link", ["message" => __("Inicie sesión para comenzar a gestionar los registros")])
                 <!--<div class="links">
                     <a href="{{ url('/students') }}">Estudiantes</a>
                     <a href="{{ url('/companies') }}">Empresas</a>
