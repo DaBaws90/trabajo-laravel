@@ -32,6 +32,12 @@ Route::get('/students/delete/{student}', 'StudentController@delete')->name('dele
 Route::get('/companies', 'CompanyController@index');
 Route::post('/companies', 'CompanyController@store');
 
+//Ciclos
+Route::get('/grades', 'GradeController@index');
+
+
+
 /*Route::get('/students', function(){
     return view('students');
 });*/
+
