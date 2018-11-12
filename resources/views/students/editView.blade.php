@@ -2,7 +2,6 @@
 
 @section('content')
 
-@auth
 <div class="row">
     <div class="col-md-8 offset-md-2">
         @include('partials.errors')
@@ -31,17 +30,5 @@
         </form>
     </div>
 </div>
-@else
-    <div class="row">
-        <div class="col-md-8 offset-md-2" style="left: 15%">
-            <h2 class="text-center text-mute">No tiene permisos para llevar a cabo esta acción</h2><br/>
-            <h3 class="text-center text-mute">En unos segundos, será redirigido al listado de estudiantes.</h3>
-            @include("partials.login_link", ["message" => __("Pulse aquí para iniciar sesión")])
-            <?php
-                header("Refresh:4; url='..'");
-            ?>
-        </div>
-    </div>
-@endauth
 
 @endsection

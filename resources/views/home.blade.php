@@ -21,7 +21,7 @@
     </div>
     @auth
     <?php header("Refresh:4; url='.'"); ?>
-    <div class="content">
+    <!--<div class="content">
         <div class="row">
             <div class="col-md-8 offset-md-8">
                 <div class="links">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     @endauth
 </div>
 @endsection
