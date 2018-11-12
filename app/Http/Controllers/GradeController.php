@@ -14,15 +14,13 @@ class GradeController extends Controller
         return view('grades.index',compact("grades"));
     }
 
-    /*
     public function store(){
         $this->validate(request(),[
-            'name'=>'required|max:20',
-            'lastname'=>'required|max:50',
-            'age'=>'required'
+            'name'=>'required|max:75',
+            'level'=>'required|max:10'
+            
         ]);
-        Student::create(request()->all());
-        return back()->with('message', ['success', __('Estudiante creado correctamente')]);
+        Grade::create(request()->all());
+        return back()->with('message', ['success', __('Ciclo creado correctamente')]);
     }
-    */
 }

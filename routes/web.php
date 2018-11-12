@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Ciclos
     Route::get('/grades', 'GradeController@index');
+    Route::post('/grades', 'GradeController@store')->name("createGrade");
 
 });
 

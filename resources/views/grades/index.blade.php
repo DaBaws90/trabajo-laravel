@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-center text-mute"> {{ __("Ciclos") }} </h1>
+        <h1 class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
@@ -20,29 +20,24 @@
             @if($grades->count())
                 {{$grades->links()}}
             @endif
-            <h2>{{ __("Añadir un nuevo Ciclo") }}</h2>
+            <h2>{{ __("Añadir Ciclo") }}</h2>
             <hr />
             @include('partials.errors')
-            <form method="POST" action="students"> {{ csrf_field() }}
+            <form method="POST" action="grades"> {{ csrf_field() }}
                 <div class="form-group"> 
                     <label for="name" class="col-md-12 control-label"> 
                         {{ __("Nombre") }} 
                     </label>
                     <input id="name" class="form-control" name="name" value="{{ old('name') }}" /> </div>
                 <div class="form-group"> 
-                    <label for="lastname" class="col-md-12 control-label"> 
-                        {{ __("Apellidos")}}
+                    <label for="level" class="col-md-12 control-label"> 
+                        {{ __("Curso")}}
                     </label> 
-                    <input id="lastname" class="form-control" name="lastname" value="{{ old('lastname') }}" />
+                    <input id="level" class="form-control" name="level" value="{{ old('level') }}" />
                 </div>
-                <div class="form-group"> 
-                    <label for="age" class="col-md-12 control-label"> 
-                        {{ __("Edad")}}
-                    </label> 
-                    <input id="age" class="form-control" name="age" value="{{ old('age') }}" />
-                </div>
-                <button type="submit" name="addStudent" class="btn btn-default"> 
-                    {{ __("Añadir estudiante") }} 
+                
+                <button type="submit" name="addGrade" class="btn btn-default"> 
+                    {{ __("Añadir Ciclo") }} 
                 </button>
             </form>
         </div>
