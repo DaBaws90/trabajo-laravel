@@ -14,6 +14,7 @@ class GradeController extends Controller
         return view('grades.index',compact("grades"));
     }
 
+    /*
     public function store(){
         $this->validate(request(),[
             'name'=>'required|max:20',
@@ -23,4 +24,5 @@ class GradeController extends Controller
         Student::create(request()->all());
         return back()->with('message', ['success', __('Estudiante creado correctamente')]);
     }
+    */
 }
