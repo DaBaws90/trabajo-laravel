@@ -67,7 +67,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div style="margin-right:3%" class="top-right links">
                     @auth
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -79,7 +79,7 @@
                     </form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <!-- <a href="{{ route('register') }}">Register</a> -->
                     @endauth
                 </div>
             @endif
@@ -89,28 +89,22 @@
                     Escuela Empresa
                 </div>
                 @auth
-                    <p>Comenzar a gestionar registros</p>
+                    <p>Comience a gestionar registros</p>
+                    <div class="links">
+                        <a href="{{ url('/students') }}">Estudiantes</a>
+                        <a href="{{ url('/companies') }}">Empresas</a>
+                        <a href="{{ url('/grades') }}">Ciclos</a>
+                        <a href="https://laravel.com/docs">Documentation</a>
+                        <a href="https://laracasts.com">Laracasts</a>
+                        <a href="https://laravel-news.com">News</a>
+                        <a href="https://forge.laravel.com">Forge</a>
+                        <a href="https://github.com/laravel/laravel">GitHub</a>
+                    </div>
                 @else
-                @include("partials.login_link", ["message" => __("Inicie sesión para comenzar a gestionar los registros")])
-                <!--<div class="links">
-                    <a href="{{ url('/students') }}">Estudiantes</a>
-                    <a href="{{ url('/companies') }}">Empresas</a>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div> -->
+            <!-- @include("partials.login_link", ["message" => __("Inicie sesión para comenzar a gestionar los registros")]) -->
+                    <p>Inicie sesión para comenzar a gestionar los registros</p>
                 @endauth
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                
             </div>
         </div>
     </body>

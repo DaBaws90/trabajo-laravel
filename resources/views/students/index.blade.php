@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-center text-mute"> {{ __("Estudiantes") }} </h1>
+        <h1 style="margin: 2% 0 5% 0" class="text-center text-mute"> {{ __("Estudiantes") }} </h1>
         @forelse($students as $student)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
@@ -19,7 +19,7 @@
         <!-- Navegación -->
         <div style="text-align:center">
             @if($students->count())
-            {{$students->links()}}
+                {{$students->links()}}
             @endif
         </div>
 
