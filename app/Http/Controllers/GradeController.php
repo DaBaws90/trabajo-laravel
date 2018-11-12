@@ -23,4 +23,13 @@ class GradeController extends Controller
         Grade::create(request()->all());
         return back()->with('message', ['success', __('Ciclo creado correctamente')]);
     }
+
+    public function details(Grade $grade){
+        
+        return view('grades.detail', compact("grade"));
+    }
+
+    public function editView(Grade $grade){
+        return view('grades.editView', compact("grade"));
+    }
 }

@@ -7,7 +7,7 @@
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
-                <a href="grades/{{ $grade->id }}"> {{ $grade->name }} {{ $grade->level }} </a>
+                <a href="grades/{{ $grade->id }}"> Nombre del ciclo: {{ $grade->name }} <br> Curso: {{ $grade->level }} </a>
             </div>
         </div>
         @empty

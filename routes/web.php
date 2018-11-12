@@ -35,8 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/companies', 'CompanyController@store');
 
     //Ciclos
-    Route::get('/grades', 'GradeController@index');
+    Route::get('/grades', 'GradeController@index')->name("listGrades");
     Route::post('/grades', 'GradeController@store')->name("createGrade");
+    Route::get('/grades/{grade}', 'GradeController@details')->name('details');
 
 });
 
