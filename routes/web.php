@@ -19,23 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Estudiantes
-Route::get('/students', 'StudentController@index');
-Route::post('/students', 'StudentController@store');
-Route::get('/students/{student}', 'StudentController@details')->name('details');
-Route::get('/students/edit/{student}', 'StudentController@editView')->name('editView');
-Route::post('/students/edit/{student}', 'StudentController@editStudent')->name('editStudent');
-Route::get('/students/delete/{student}', 'StudentController@delete')->name('deleteStudent');
-//Route::post('/students/edit/{id}', 'StudentController@');
+Route::group(['middleware' => 'auth'], function () {
+    // All my routes that needs a logged in user
 
-//Empresas
-Route::get('/companies', 'CompanyController@index');
-Route::post('/companies', 'CompanyController@store');
+    //Estudiantes
+    Route::get('/students', 'StudentController@index')->name("listStudents");
+    Route::post('/students', 'StudentController@store')->name("createStudent");
+    Route::get('/students/{student}', 'StudentController@details')->name('details');
+    Route::get('/students/edit/{student}', 'StudentController@editView')->name('editView');
+    Route::post('/students/edit/{student}', 'StudentController@editStudent')->name('editStudent');
+    Route::get('/students/delete/{student}', 'StudentController@delete')->name('deleteStudent');
 
-//Ciclos
-Route::get('/grades', 'GradeController@index');
+    //Empresas
+    Route::get('/companies', 'CompanyController@index');
+    Route::post('/companies', 'CompanyController@store');
 
+    //Ciclos
+    Route::get('/grades', 'GradeController@index');
 
+});
 
 /*Route::get('/students', function(){
     return view('students');
