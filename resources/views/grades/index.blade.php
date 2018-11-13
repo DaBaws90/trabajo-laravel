@@ -16,10 +16,13 @@
         </div>
         @endforelse
         <!-- Navegación -->
-        <div style="margin:0 auto">
+        <div style="text-align:center">
             @if($grades->count())
                 {{$grades->links()}}
             @endif
+        </div>
+        
+        <div style="margin:0 auto">
             <h2>{{ __("Añadir Ciclo") }}</h2>
             <hr />
             @include('partials.errors')
@@ -36,7 +39,7 @@
                     <input id="level" class="form-control" name="level" value="{{ old('level') }}" />
                 </div>
                 
-                <button type="submit" name="addGrade" class="btn btn-default"> 
+                <button style="margin:3% auto;display:block"  type="submit" name="addGrade" class="btn btn-default"> 
                     {{ __("Añadir Ciclo") }} 
                 </button>
             </form>

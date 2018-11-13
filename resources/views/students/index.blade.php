@@ -8,6 +8,7 @@
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
                 <a href="students/{{ $student->id }}"> {{ $student->name }} {{ $student->lastname }} </a>
+                <a href="{{ route('deleteStudent', $student->id) }}" class="pull-right"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>
         @empty
@@ -50,7 +51,7 @@
                     <input id="age" type="number" class="form-control" name="age" value="{{ old('age') }}" />
                 </div>
 
-                <button type="submit" name="addStudent" class="btn btn-default">
+                <button style="margin:3% auto;display:block" type="submit" name="addStudent" class="btn btn-default">
                     {{ __("Añadir estudiante") }}
                 </button>
             </form>

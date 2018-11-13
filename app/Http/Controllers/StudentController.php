@@ -24,8 +24,13 @@ class StudentController extends Controller
             'lastname'=>'required|max:50',
             'age'=>'required'
         ]);
-        Student::create(request()->all());
-        return back()->with('message', ['success', __('Estudiante creado correctamente')]);
+        $res = Student::create(request()->all());
+        if ($res){
+            return back()->with('message', ['success' , 'Estudiante creado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo crear el estudiante']);
+        }
     }
 
     public function editView(Student $student){
@@ -38,11 +43,18 @@ class StudentController extends Controller
             'lastname'=>'required|max:50',
             'age'=>'required'
         ]);
-        $student->name = request()->name;
-        $student->lastname = request()->lastname;
-        $student->age = request()->age;
-        $student->save();
-        return redirect(route('details', $student->id))->with('message', ['success', __('Estudiante editado correctamente')]);
+        $res = Student::find($student->id);
+        $res->name = request()->name;
+        $res->lastname = request()->lastname;
+        $res->age = request()->age;
+        $res->save();
+        if ($res){
+            return back()->with('message', ['success' , 'Estudiante editado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo editar el estudiante']);
+        }
+        //push()relationships
     }
 
     public function delete(Student $student){
@@ -55,7 +67,12 @@ class StudentController extends Controller
 
         //Eliminar directamente
         //$student->delete();
-
-        return back()->with('message', ['success', __("Estudiante eliminado correctamente")]);
+        $destroy = Student::destroy($student->id);
+        if ($destroy){
+            return back()->with('message', ['success' , 'Estudiante eliminado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
+        }
     }
 }

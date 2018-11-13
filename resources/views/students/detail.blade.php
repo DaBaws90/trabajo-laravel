@@ -23,11 +23,8 @@
         <a href="/escuelaempresa/public/students" class="btn btn-info pull-left">
             {{ __("Volver atrás") }}
         </a>
-        <a style="margin-left:2%" href="{{ route('editView', $student->id) }}" class="btn btn-primary pull-right">
-            {{ __("Editar") }}
-        </a>
         <a href="{{ route('editView', $student->id) }}" class="btn btn-primary pull-right">
-            {{ __("Eliminar") }}
+            {{ __("Editar") }}
         </a>
     </div>
 </div>

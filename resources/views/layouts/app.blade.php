@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -74,13 +76,14 @@
         </nav>
         @if(session('message'))
             @if(session('message')[0] == 'success')
-            <div style="text-align:center" class="alert alert-{{ session('message')[0] }}">
+            <div style="text-align:center" class="alert alert-{{ session('message')[0] }} fade in">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
                 {{ session('message')[1] }}
             </div>
             @else
-            <div style="text-align:center" class="alert alert-danger fade in">
+            <div style="text-align:center" class="alert alert-{{ session('message')[0] }} fade in">
                 <a href="#" class="close" data-dismiss="alert">&times;</a>
-                Se produjo un error al realizar la operación
+                {{ session('message')[1] }}
             </div>
             @endif
         @endif
