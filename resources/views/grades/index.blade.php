@@ -3,11 +3,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
+        <h1 style="margin: 2% 0 5% 0" class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
                 <a href="grades/{{ $grade->id }}"> Nombre del ciclo: {{ $grade->name }} <br> Curso: {{ $grade->level }} </a>
+                <a href="{{ route('deleteGrade', $grade->id) }}" class="pull-right"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>
         @empty
@@ -15,6 +16,7 @@
             {{ __("Todvía no hay ningún ciclo registrado en el sistema") }}
         </div>
         @endforelse
+        
         <!-- Navegación -->
         <div style="text-align:center">
             @if($grades->count())
@@ -23,8 +25,9 @@
         </div>
         
         <div style="margin:0 auto">
-            <h2>{{ __("Añadir Ciclo") }}</h2>
+            <h2 style="text-align:center">{{ __("Añadir Ciclo") }}</h2>
             <hr />
+            
             @include('partials.errors')
             <form method="POST" action="grades"> {{ csrf_field() }}
                 <div class="form-group"> 

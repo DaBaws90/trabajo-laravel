@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/grades', 'GradeController@index')->name("listGrades");
     Route::post('/grades', 'GradeController@store')->name("createGrade");
     Route::get('/grades/{grade}', 'GradeController@details')->name('details');
+    Route::get('/grades/edit/{grade}', 'GradeController@editView')->name('editViewGrades');
+    Route::post('/grades/edit/{grade}', 'GradeController@editGrade')->name('editGrade');
+    Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
 
 });
 
