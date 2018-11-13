@@ -22,8 +22,9 @@
                         <input id="level" class="form-control" name="level" value="{{ old('level', $grade->level) }}" />
                     </div>
 
-                   
-
+                   <a href="{{ route('listGrades') }}" class="btn btn-info pull-left">
+                        {{ __("Volver atrás") }}
+                    </a>
                     <button  style="margin:5% auto;display:block" type="submit" name="editGrade" class="btn btn-default"> 
                         {{ __("Editar Ciclo") }} 
                     </button>
