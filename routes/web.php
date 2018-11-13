@@ -34,9 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/companies', 'CompanyController@index');
     Route::post('/companies', 'CompanyController@store');
     Route::get('/companies/{company}}', 'StudentController@details')->name('details');
-    Route::get('/companies/edit/{company}}', 'CompanyController@editView')->name('editView');
-    Route::post('/companies/edit/{company}}', 'CompanyController@editCompany')->name('editCompany');
-    Route::get('/companies/delete/{company}}', 'CompanyController@delete')->name('deleteCompany');
+    Route::get('/companies/edit/{company}', 'CompanyController@editView')->name('editView');
+    Route::post('/companies/edit/{company}', 'CompanyController@editCompany')->name('editCompany');
+    Route::get('/companies/delete/{company}', 'CompanyController@delete')->name('deleteCompany');
 
     //Ciclos
     Route::get('/grades', 'GradeController@index')->name("listGrades");
