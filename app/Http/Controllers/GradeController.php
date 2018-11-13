@@ -17,11 +17,18 @@ class GradeController extends Controller
     public function store(){
         $this->validate(request(),[
             'name'=>'required|max:75',
-            'level'=>'required|max:10'
+            'level'=>'required|max:1'
             
-        ]);
-        Grade::create(request()->all());
-        return back()->with('message', ['success', __('Ciclo creado correctamente')]);
+        ]);       
+
+
+        $res = Grade::create(request()->all());
+        if ($res){
+            return back()->with('message', ['success' , 'Ciclo creado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo crear el Ciclo']);
+        }
     }
 
     public function details(Grade $grade){
@@ -31,5 +38,35 @@ class GradeController extends Controller
 
     public function editView(Grade $grade){
         return view('grades.editView', compact("grade"));
+    }
+
+    public function editGrade(Grade $grade){
+        $this->validate(request(),[
+            'name'=>'required|max:75',
+            'level'=>'required|max:1'
+        ]);
+        $res = Grade::find($grade->id);
+        $res->name = request()->name;
+        $res->level = request()->level;
+       
+        $res->save();
+        if ($res){
+            return back()->with('message', ['success' , 'Ciclo editado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo editar el Ciclo']);
+        }
+      
+    }
+
+    public function delete(Grade $grade){
+        
+        $destroy = Grade::destroy($grade->id);
+        if ($destroy){
+            return back()->with('message', ['success' , 'Ciclo eliminado correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo eliminar el Ciclo']);
+        }
     }
 }
