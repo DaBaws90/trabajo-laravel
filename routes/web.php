@@ -50,6 +50,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/grades/edit/{grade}', 'GradeController@editGrade')->name('editGrade');
     Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
 
+     //Peticiones
+     Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
+     
+
 });
 
 /*Route::get('/students', function(){

@@ -46,13 +46,13 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 111px;
             }
 
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 24px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -88,12 +88,12 @@
                     Escuela Empresa
                 </div>
                 @auth
-                    <p>Comience a gestionar registros</p>
+                    <p><h2>Comience a gestionar registros</h2></p>
                     <div class="links">
                         <a href="{{ url('/students') }}">Estudiantes</a>
                         <a href="{{ url('/companies') }}">Empresas</a>
                         <a href="{{ url('/grades') }}">Ciclos</a>
-                        <a href="https://laravel.com/docs">Documentation</a>
+                        <a href="{{ url('/petitions') }}">Peticiones</a>
                         <a href="https://laracasts.com">Laracasts</a>
                         <a href="https://laravel-news.com">News</a>
                         <a href="https://forge.laravel.com">Forge</a>
