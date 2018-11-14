@@ -17,9 +17,9 @@ class CreateStudiesTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->unsignedInteger("id_student");
-            $table->foreign("id_student")->references("id")->on("students");
+            $table->foreign("id_student")->references("id")->on("students")->onDelete('cascade');
             $table->unsignedInteger("id_grade");
-            $table->foreign("id_grade")->references("id")->on("grades");
+            $table->foreign("id_grade")->references("id")->on("grades")->onDelete('cascade');
             $table->timestamps();
         });
     }

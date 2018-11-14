@@ -63,7 +63,9 @@ class StudentController extends Controller
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
-        
+        Study::find($request->id_grade)->update([
+            'id_student'=>$id,
+        ]);
         if($res){
             return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
