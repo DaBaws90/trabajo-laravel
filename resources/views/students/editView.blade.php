@@ -30,6 +30,19 @@
                         <input id="age" class="form-control" name="age" value="{{ old('age', $student->age) }}" />
                     </div>
 
+                    <div class="form-group">
+                        <label for="grados" class="col-md-12">
+                            {{ __("Grado")}}
+                        </label>
+                        <select id="grados" class="form-control" name="id_grade">
+                        @forelse($grades as $grade)
+                            <option value="{{ old('id_grade', $grade->id }}">{{ $grade->name }}</option>
+                        @empty
+                            {{ __("No hay ningún grado registrado en este momento")}}
+                        @endforelse
+                        </select>
+                    </div>
+
                     <button  style="margin:5% auto;display:block" type="submit" name="editStudent" class="btn btn-default"> 
                         {{ __("Editar estudiante") }} 
                     </button>

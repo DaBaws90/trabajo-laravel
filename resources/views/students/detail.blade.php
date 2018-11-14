@@ -23,7 +23,7 @@
         <a href="{{ route('students.index') }}" class="btn btn-info pull-left">
             {{ __("Volver atrás") }}
         </a>
-        <a href="{{ action('StudentController@edit', $student->id) }}" class="btn btn-primary pull-right">
+        <a href="{{ action('StudentController@edit', $student->id) }}" class="btn btn-default pull-right">
             {{ __("Editar") }}
         </a>
     </div>

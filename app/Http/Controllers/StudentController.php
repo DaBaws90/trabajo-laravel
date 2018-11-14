@@ -32,6 +32,11 @@ class StudentController extends Controller
             'age'=>'required'
         ]);
         $res = Student::create($request->all());
+        $student = Student::latest()->first();
+        Study::create([
+            'id_student'=>$student->id,
+            'id_grade'=>$request->id_grade,
+        ]);
         if ($res){
             return redirect()->route('students.index')->with('message', ['success' , 'Estudiante creado correctamente']);
         }
@@ -42,6 +47,7 @@ class StudentController extends Controller
 
     public function edit($id){
         $student = Student::find($id);
+        $grades = Grade::all();
         return view('students.editView', compact("student"));
     }
 
@@ -57,6 +63,7 @@ class StudentController extends Controller
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
+        
         if($res){
             return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
