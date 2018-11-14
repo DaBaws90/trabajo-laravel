@@ -8,6 +8,7 @@
                 <form method="POST" action="{{ route('students.update', $student->id) }}" role="form"> {{ csrf_field() }}
 
                     <input name="_method" type="hidden" value="PATCH"/>
+                    <input type="hidden" value="{{ $student->id }}"/>
 
                     <div class="form-group"> 
                         <label for="name" class="col-md-12 control-label"> 

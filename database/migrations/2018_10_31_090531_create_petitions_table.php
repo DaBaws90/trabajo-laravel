@@ -17,9 +17,9 @@ class CreatePetitionsTable extends Migration
             $table->engine = "InnoDB";
             $table->increments('id');
             $table->unsignedInteger("id_company");
-            $table->foreign("id_company")->references("id")->on("companies");
+            $table->foreign("id_company")->references("id")->on("companies")->onDelete('cascade');
             $table->unsignedInteger("id_grade");
-            $table->foreign("id_grade")->references("id")->on("grades");
+            $table->foreign("id_grade")->references("id")->on("grades")->onDelete('cascade');
             $table->string("type");
             $table->integer("n_students");
             $table->timestamps();
