@@ -11,7 +11,7 @@ class Study extends Model
     protected $fillable = ["id_student", "id_grade"];
 
     public function student(){
-        return $this->belongsTo(Student::class, "id_Student");
+        return $this->belongsTo(Student::class, "id_student");
     }
 
     public function grade(){

@@ -14,4 +14,7 @@ class Student extends Model
     public function grades(){
         return $this->hasManyThrough(Grade::class, Study::class); 
     }
+    public function studies(){
+        return $this->hasMany(Study::class);
+    }
 }

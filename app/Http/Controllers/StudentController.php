@@ -48,7 +48,7 @@ class StudentController extends Controller
     public function edit($id){
         $student = Student::find($id);
         $grades = Grade::all();
-        return view('students.editView', compact("student"));
+        return view('students.editView', compact("student", "grades"));
     }
 
     public function update(Request $request, $id){
@@ -59,13 +59,14 @@ class StudentController extends Controller
         ]);
         $res = Student::find($id);
         Student::find($id)->update($request->all());
+        $r = Study::where('id_student', $id)->get();
+        //$n = count($r);
+        $r[0]->id_grade = $request->id_grade;
+        $r[0]->update();
         /*$res->name = $request->name;
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
-        Study::find($request->id_grade)->update([
-            'id_student'=>$id,
-        ]);
         if($res){
             return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
