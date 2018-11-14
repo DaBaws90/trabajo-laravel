@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a class="nav-item nav-link" href="{{ route('listStudents') }}">Estudiantes</a></li>
+                        <li><a class="nav-item nav-link" href="{{ route('students.index') }}">Estudiantes</a></li>
                         <li><a class="nav-item nav-link" href="@{'/carreras/'}">Carreras</a></li>
                         <li><a class="nav-item nav-link disabled" href="#">Disabled</a></li>
                     </ul>

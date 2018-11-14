@@ -13,51 +13,57 @@ class StudentController extends Controller
         return view('students.index',compact("students"));
     }
 
-    public function details(Student $student){
+    public function show(Student $student){
         //dd($student);
         return view('students.detail', compact("student"));
     }
 
-    public function store(){
-        $this->validate(request(),[
+    public function create(){
+        return view('students.addView');
+    }
+
+    public function store(Request $request){
+        $this->validate($request,[
             'name'=>'required|max:20',
             'lastname'=>'required|max:50',
             'age'=>'required'
         ]);
-        $res = Student::create(request()->all());
+        $res = Student::create($request->all());
         if ($res){
-            return back()->with('message', ['success' , 'Estudiante creado correctamente']);
+            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante creado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo crear el estudiante']);
+            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo crear el estudiante']);
         }
     }
 
-    public function editView(Student $student){
+    public function edit($id){
+        $student = Student::find($id);
         return view('students.editView', compact("student"));
     }
 
-    public function editStudent(Student $student){
-        $this->validate(request(),[
+    public function update(Request $request, $id){
+        $this->validate($request,[
             'name'=>'required|max:20',
             'lastname'=>'required|max:50',
             'age'=>'required'
         ]);
-        $res = Student::find($student->id);
-        $res->name = request()->name;
-        $res->lastname = request()->lastname;
-        $res->age = request()->age;
-        $res->save();
-        if ($res){
-            return back()->with('message', ['success' , 'Estudiante editado correctamente']);
+        $res = Student::find($id);
+        Student::find($id)->update($request->all());
+        /*$res->name = $request->name;
+        $res->lastname = $request->lastname;
+        $res->age = $request->age;*/
+        //$res->update($request->all());
+        if($res){
+            return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo editar el estudiante']);
+            return redirect()->route('students.edit', $id)->with('message', ['danger' , 'No se pudo editar el estudiante']); 
         }
         //push()relationships
     }
 
-    public function delete(Student $student){
+    public function destroy($id){
         //Sin recuperar el registro
         //Student::destroy($student->id);
 
@@ -67,12 +73,12 @@ class StudentController extends Controller
 
         //Eliminar directamente
         //$student->delete();
-        $destroy = Student::destroy($student->id);
+        $destroy = Student::destroy($id);
         if ($destroy){
-            return back()->with('message', ['success' , 'Estudiante eliminado correctamente']);
+            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante eliminado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
+            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
         }
     }
 }

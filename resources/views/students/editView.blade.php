@@ -5,8 +5,9 @@
     <div style="margin:0 auto" class="row">
         <div style="left:15%"class="col-md-8 offset-md-2">
             @include('partials.errors')
-                <form method="POST" action="{{ route('editStudent', $student->id) }}"> {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $student->id }}"/>
+                <form method="POST" action="{{ route('students.update', $student->id) }}" role="form"> {{ csrf_field() }}
+
+                    <input name="_method" type="hidden" value="PATCH"/>
 
                     <div class="form-group"> 
                         <label for="name" class="col-md-12 control-label"> 

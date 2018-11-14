@@ -20,10 +20,10 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <a href="/escuelaempresa/public/students" class="btn btn-info pull-left">
+        <a href="{{ route('students.index') }}" class="btn btn-info pull-left">
             {{ __("Volver atrás") }}
         </a>
-        <a href="{{ route('editView', $student->id) }}" class="btn btn-primary pull-right">
+        <a href="{{ action('StudentController@edit', $student->id) }}" class="btn btn-primary pull-right">
             {{ __("Editar") }}
         </a>
     </div>
