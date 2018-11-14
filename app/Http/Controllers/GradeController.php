@@ -17,10 +17,10 @@ class GradeController extends Controller
     public function store(){
         $this->validate(request(),[
             'name'=>'required|max:75',
-            'level'=>'required|digit:1'
+            'level'=>['required','regex:^[1-3]^']
             
         ], [
-            "level.digits" => __("Level field must be 1 digit")
+            "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
         ]);       
 
 
@@ -45,9 +45,9 @@ class GradeController extends Controller
     public function editGrade(Grade $grade){
         $this->validate(request(),[
             'name'=>'required|max:75',
-            'level'=>'required|digits:1'
+            'level'=>['required','regex:^[1-3]^']
         ], [
-            "level.digits" => __("Level field must be 1 digit")
+            "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
         ]);
         $res = Grade::find($grade->id);
         $res->name = request()->name;
