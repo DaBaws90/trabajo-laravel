@@ -4,6 +4,8 @@ namespace escuelaempresa\Http\Controllers;
 
 use Illuminate\Http\Request;
 use escuelaempresa\Student;
+use escuelaempresa\Study;
+use escuelaempresa\Grade;
 
 class StudentController extends Controller
 {
@@ -19,7 +21,8 @@ class StudentController extends Controller
     }
 
     public function create(){
-        return view('students.addView');
+        $grades = Grade::all();
+        return view('students.addView', compact("grades"));
     }
 
     public function store(Request $request){
