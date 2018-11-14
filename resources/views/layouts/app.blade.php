@@ -39,7 +39,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a class="nav-item nav-link" href="{{ route('students.index') }}">Estudiantes</a></li>
-                        <li><a class="nav-item nav-link" href="@{'/carreras/'}">Carreras</a></li>
+                        <li><a class="nav-item nav-link" href="#">Empresas</a></li>
                         <li><a class="nav-item nav-link disabled" href="#">Disabled</a></li>
                     </ul>
 
@@ -48,7 +48,6 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
