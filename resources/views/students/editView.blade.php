@@ -44,9 +44,19 @@
                         </select>
                     </div>
 
-                    <button  style="margin:5% auto;display:block" type="submit" name="editStudent" class="btn btn-default"> 
-                        {{ __("Editar estudiante") }} 
-                    </button>
+                    <div style="margin-top:4%" class="row">
+                        <div class="col-md-5">
+                            <a href="{{ route('students.show', $student->id) }}" class="btn btn-default pull-left">
+                                {{ __("Volver atrás") }}
+                            </a>
+                        </div>
+                        <div class="col-md-7">
+                            <button style="display:block" type="submit" name="editStudent" class="btn btn-primary"> 
+                                {{ __("Editar estudiante") }} 
+                            </button>
+                        </div>
+                        
+                    </div>
                 </form>
             
         </div>

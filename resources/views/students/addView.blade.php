@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="grados" class="col-md-12">
+                        <label for="grados" class="col-md-12 control-label">
                             {{ __("Grado")}}
                         </label>
                         <select id="grados" class="form-control" name="id_grade">

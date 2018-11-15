@@ -4,77 +4,107 @@ namespace escuelaempresa\Http\Controllers;
 
 use Illuminate\Http\Request;
 use escuelaempresa\Company;
+use escuelaempresa\Petition;
 
 class CompanyController extends Controller
 {
     public function index(){
         $companies = Company::latest()->paginate(5);
-        return view("companies.index", compact("companies"));
+        return view('companies.index',compact("companies"));
     }
 
-    public function details(Company $company){
+    public function show(Company $company){
+        //$grades = Student::where('id',$student->id)->with('studies.grade')->get();
         return view('companies.detail', compact("company"));
     }
 
-    public function store(){
-        $this->validate(request(),[
+    public function create(){
+        $grades = Grade::all();
+        return view('students.addView', compact("grades"));
+    }
+
+    public function store(Request $request){
+        $this->validate($request,[
             'name'=>'required|max:20',
-            'city'=>'required|max:50',
-            'cp'=>'required|digits:5',//regexp:^[0-9], bail se usa para detener las validaciones al primer error
-        ], [
-            "cp.digits" => __("Postal code field must be 5 digits")
+            'lastname'=>'required|max:50',
+            'age'=>'required'
         ]);
-        $res = Company::create(request()->all());
+        $res = Student::create($request->all());
+        $student = Student::latest()->first();
+        Study::create([
+            'id_student'=>$student->id,
+            'id_grade'=>$request->id_grade,
+        ]);
         if ($res){
-            return back()->with('message', ['success' , 'Empresa creada correctamente']);
+            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante creado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo crear la empresa']);
+            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo crear el estudiante']);
         }
     }
 
-    public function editView(Company $company){
-        return view('companies.editView', compact("company"));
+    public function edit($id){
+        $student = Student::find($id);
+        $grades = Grade::all();
+        return view('students.editView', compact("student", "grades"));
     }
 
-    public function editCompany(Company $company){
-        $this->validate(request(),[
+    public function update(Request $request, $id){
+        $this->validate($request,[
             'name'=>'required|max:20',
-            'city'=>'required|max:50',
-            'cp'=>'required|digits:5',
-        ], [
-            "cp.digits" => __("Postal code field must be 5 digits")
+            'lastname'=>'required|max:50',
+            'age'=>'required'
         ]);
-        $res = Company::find($company->id);
-        $res->name = request()->name;
-        $res->city = request()->city;
-        $res->cp = request()->cp;
-        $res->save();
-        if ($res){
-            return back()->with('message', ['success' , 'Empresa editada correctamente']);
+        $res = Student::find($id);
+        $res->update($request->all());
+        //$r = Study::where('id_student', $id)->get();
+        //$r[0]->id_grade = $request->id_grade;
+        //$r[0]->update();
+        /*$res->name = $request->name;
+        $res->lastname = $request->lastname;
+        $res->age = $request->age;*/
+        //$res->update($request->all());
+        Study::create([
+            'id_student'=>$id,
+            'id_grade'=>$request->id_grade,
+        ]);
+        if($res){
+            return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo editar la empresa']);
+            return redirect()->route('students.edit', $id)->with('message', ['danger' , 'No se pudo editar el estudiante']); 
         }
         //push()relationships
     }
 
-    public function delete(Company $company){
+    public function destroy($id){
         //Sin recuperar el registro
-        //Company::destroy($company->id);
+        //Student::destroy($student->id);
 
         //Recuperando el registro si recibiésemos un id
-        //$s = Company::find($company->id);
+        //$s = Student::find($student->id);
         //$s->delete()
 
         //Eliminar directamente
-        //$company->delete();
-        $destroy = Company::destroy($company->id);
+        //$student->delete();
+        $destroy = Student::destroy($id);
         if ($destroy){
-            return back()->with('message', ['success' , 'Empresa eliminada correctamente']);
+            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante eliminado correctamente']);
         }
         else{
-            return back()->with('message', ['danger' , 'No se pudo eliminar la empresa']);
+            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
+        }
+    }
+
+    public function destroyStudy($id){
+        $study = Study::find($id);
+        $student = Student::find($study->id_student);
+        $destroy = Study::destroy($study->id);
+        if ($destroy){
+            return redirect()->route('students.show', $student->id)->with('message', ['success' , 'Estudio (Study) eliminado correctamente']);
+        }
+        else{
+            return redirect()->route('students.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar el estudio (Study)']);
         }
     }
 }
