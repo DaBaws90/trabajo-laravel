@@ -46,13 +46,13 @@
             }
 
             .title {
-                font-size: 111px;
+                font-size: 84px;
             }
 
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
-                font-size: 24px;
+                font-size: 12px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -88,7 +88,7 @@
                     Escuela Empresa
                 </div>
                 @auth
-                    <p><h2>Comience a gestionar registros</h2></p>
+                    <p style="font-size:22px">Comience a gestionar registros</p>
                     <div class="links">
                         <a href="{{ url('/students') }}">Estudiantes</a>
                         <a href="{{ url('/companies') }}">Empresas</a>
