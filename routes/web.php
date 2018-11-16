@@ -56,15 +56,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/grades/edit/{grade}', 'GradeController@editGrade')->name('editGrade');
     Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
 
-<<<<<<< HEAD
      //Peticiones
      Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
      Route::post('/petitions', 'PetitionController@store')->name("createPetition");
      Route::get('/petitions/delete/{petition}', 'PetitionController@delete')->name('deletePetition');
-=======
-    //Peticiones
-    Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
->>>>>>> 4694debb2f79f138f527f58601e7f25898963c2b
      
 
 });
