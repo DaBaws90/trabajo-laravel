@@ -32,20 +32,21 @@ Route::group(['middleware' => 'auth'], function () {
     // All my routes that needs a logged in user
 
     //Estudiantes
-    Route::get('students/{student}/delete', 'StudentController@destroyStudy')->name('deleteStudy');
+    Route::get('students/{id}/delete', 'StudentController@destroyStudy')->name('deleteStudy');
     Route::resource('students', 'StudentController');
 
     //Cursando (Study)
     //Route::resource('studies', 'StudyController'); No fue necesario finalmente
 
     //Empresas
+    Route::get('companies/{id}/delete', 'CompanyController@destroyPetition')->name('deletePetition');
     Route::resource('companies', 'CompanyController');
-    Route::get('/companies', 'CompanyController@index');
+    /*Route::get('/companies', 'CompanyController@index');
     Route::post('/companies', 'CompanyController@store');
     Route::get('/companies/{company}}', 'StudentController@details')->name('details');
     Route::get('/companies/edit/{company}', 'CompanyController@editView')->name('editView');
     Route::post('/companies/edit/{company}', 'CompanyController@editCompany')->name('editCompany');
-    Route::get('/companies/delete/{company}', 'CompanyController@delete')->name('deleteCompany');
+    Route::get('/companies/delete/{company}', 'CompanyController@delete')->name('deleteCompany');*/
 
     //Ciclos
     Route::get('/grades', 'GradeController@index')->name("listGrades");
@@ -55,8 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/grades/edit/{grade}', 'GradeController@editGrade')->name('editGrade');
     Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
 
-     //Peticiones
-     Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
+    //Peticiones
+    Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
      
 
 });

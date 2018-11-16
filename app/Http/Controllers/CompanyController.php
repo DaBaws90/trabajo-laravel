@@ -20,26 +20,26 @@ class CompanyController extends Controller
 
     public function create(){
         $grades = Grade::all();
-        return view('students.addView', compact("grades"));
+        return view('companies.addView', compact("grades"));
     }
 
     public function store(Request $request){
         $this->validate($request,[
-            'name'=>'required|max:20',
-            'lastname'=>'required|max:50',
-            'age'=>'required'
+            'name'=>'required|max:30',
+            'city'=>'required|max:30',
+            'cp'=>'required'
         ]);
-        $res = Student::create($request->all());
-        $student = Student::latest()->first();
-        Study::create([
-            'id_student'=>$student->id,
+        $res = Company::create($request->all());
+        $company = Company::latest()->first();
+        Petition::create([
+            'id_company'=>$student->id,
             'id_grade'=>$request->id_grade,
         ]);
         if ($res){
-            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante creado correctamente']);
+            return redirect()->route('companies.index')->with('message', ['success' , 'Empresa creada correctamente']);
         }
         else{
-            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo crear el estudiante']);
+            return redirect()->route('companies.index')->with('message', ['danger' , 'No se pudo crear la empresa']);
         }
     }
 
@@ -51,11 +51,11 @@ class CompanyController extends Controller
 
     public function update(Request $request, $id){
         $this->validate($request,[
-            'name'=>'required|max:20',
-            'lastname'=>'required|max:50',
-            'age'=>'required'
+            'name'=>'required|max:30',
+            'city'=>'required|max:30',
+            'cp'=>'required'
         ]);
-        $res = Student::find($id);
+        $res = Company::find($id);
         $res->update($request->all());
         //$r = Study::where('id_student', $id)->get();
         //$r[0]->id_grade = $request->id_grade;
@@ -64,15 +64,15 @@ class CompanyController extends Controller
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
-        Study::create([
-            'id_student'=>$id,
+        Petition::create([
+            'id_company'=>$id,
             'id_grade'=>$request->id_grade,
         ]);
         if($res){
-            return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
+            return redirect()->route('companies.edit', $id)->with('message', ['success' , 'Empresa editada correctamente']);
         }
         else{
-            return redirect()->route('students.edit', $id)->with('message', ['danger' , 'No se pudo editar el estudiante']); 
+            return redirect()->route('companies.edit', $id)->with('message', ['danger' , 'No se pudo editar la empresa']); 
         }
         //push()relationships
     }
@@ -87,24 +87,24 @@ class CompanyController extends Controller
 
         //Eliminar directamente
         //$student->delete();
-        $destroy = Student::destroy($id);
+        $destroy = Company::destroy($id);
         if ($destroy){
-            return redirect()->route('students.index')->with('message', ['success' , 'Estudiante eliminado correctamente']);
+            return redirect()->route('companies.index')->with('message', ['success' , 'Empresa eliminada correctamente']);
         }
         else{
-            return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
+            return redirect()->route('companies.index')->with('message', ['danger' , 'No se pudo eliminar la empresa']);
         }
     }
 
-    public function destroyStudy($id){
-        $study = Study::find($id);
-        $student = Student::find($study->id_student);
-        $destroy = Study::destroy($study->id);
+    public function destroyPetition($id){
+        $petition = Petition::find($id);
+        $company = Company::find($petition->id_company);
+        $destroy = Petition::destroy($petition->id);
         if ($destroy){
-            return redirect()->route('students.show', $student->id)->with('message', ['success' , 'Estudio (Study) eliminado correctamente']);
+            return redirect()->route('companies.show', $student->id)->with('message', ['success' , 'Petición eliminada correctamente']);
         }
         else{
-            return redirect()->route('students.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar el estudio (Study)']);
+            return redirect()->route('companies.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar la petición']);
         }
     }
 }
