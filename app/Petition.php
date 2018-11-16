@@ -11,6 +11,7 @@ class Petition extends Model
 
     protected $fillable = ["id_company", "id_grade", "type", "n_students"];
 
+    
     public function grade(){
         return $this->belongsTo(Grade::class, "id_grade");
     }

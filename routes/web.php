@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth'], function () {
 
      //Peticiones
      Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
+     Route::post('/petitions', 'PetitionController@store')->name("createPetition");
+     Route::get('/petitions/delete/{petition}', 'PetitionController@delete')->name('deletePetition');
      
 
 });
