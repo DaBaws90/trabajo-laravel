@@ -31,10 +31,6 @@ class CompanyController extends Controller
         ]);
         $res = Company::create($request->all());
         $company = Company::latest()->first();
-        Petition::create([
-            'id_company'=>$student->id,
-            'id_grade'=>$request->id_grade,
-        ]);
         if ($res){
             return redirect()->route('companies.index')->with('message', ['success' , 'Empresa creada correctamente']);
         }
@@ -64,10 +60,6 @@ class CompanyController extends Controller
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
-        Petition::create([
-            'id_company'=>$id,
-            'id_grade'=>$request->id_grade,
-        ]);
         if($res){
             return redirect()->route('companies.edit', $id)->with('message', ['success' , 'Empresa editada correctamente']);
         }
@@ -96,7 +88,7 @@ class CompanyController extends Controller
         }
     }
 
-    public function destroyPetition($id){
+    /*public function destroyPetition($id){
         $petition = Petition::find($id);
         $company = Company::find($petition->id_company);
         $destroy = Petition::destroy($petition->id);
@@ -106,5 +98,5 @@ class CompanyController extends Controller
         else{
             return redirect()->route('companies.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar la petición']);
         }
-    }
+    }*/
 }

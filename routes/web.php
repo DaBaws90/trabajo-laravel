@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     // All my routes that needs a logged in user
 
     //Estudiantes
-    Route::get('students/{id}/delete', 'StudentController@destroyStudy')->name('deleteStudy');
+    Route::post('students/{id}/delete', 'StudentController@destroyStudy')->name('deleteStudy');
     Route::resource('students', 'StudentController');
 
     //Cursando (Study)

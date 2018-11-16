@@ -26,10 +26,10 @@
                         {{ __("Ciclo") }} : <a href="grades/{{$study->grade->id}}">{{ $study->grade->name }}</a>
                     </div>
                     <div class="col-md-6">
-                        <a class="pull-right" href="{{ route('deleteStudy', $study->id) }}">
-                            <!-- Cambiar el action para que redireccione al método -->
-                            <i class="far fa-trash-alt"></i>
-                        </a>
+                        <form action="{{ route('deleteStudy',['id'=> $study->id]) }}" method="POST">
+                            {{csrf_field()}}
+                            <button onclick="return confirm('Estás seguro?')"  class="btn btn-danger btn-xs pull-right" type="submit"><i class="far fa-trash-alt"></i></button>
+                        </form>
                     </div>
                 </div>
                 @empty
@@ -41,7 +41,7 @@
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST">
                             {{csrf_field()}}
                             <input name="_method" type="hidden" value="DELETE">
-                            <button class="btn btn-danger btn-xs pull-right" type="submit"><i class="far fa-trash-alt"></i></button>
+                            <button onclick="return confirm('Estás seguro?')" class="btn btn-danger btn-xs pull-right" type="submit"><i class="far fa-trash-alt"></i></button>
                         </form>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="row">
+<div style="margin-bottom:3%" class="row">
     <div class="col-md-8 col-md-offset-2">
         <a href="{{ route('students.index') }}" class="btn btn-default pull-left">
             {{ __("Volver atrás") }}

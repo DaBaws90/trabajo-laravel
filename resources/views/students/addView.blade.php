@@ -46,7 +46,7 @@
                         </select>
                     </div>
                     
-                    <input style="margin:4% 0" type="submit" value="Añadir estudiante" class="btn btn-block btn-default"/>
+                    <input style="margin:4% 0" type="submit" value="Añadir estudiante" class="btn btn-block btn-primary"/>
                 </form>
 
             </div>
