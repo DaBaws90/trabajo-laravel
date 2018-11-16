@@ -11,12 +11,11 @@ class StudentController extends Controller
 {
     public function index(){
         $students = Student::latest()->paginate(5);
-        //dd($students);
         return view('students.index',compact("students"));
     }
 
     public function show(Student $student){
-        //dd($student);
+        //$grades = Student::where('id',$student->id)->with('studies.grade')->get();
         return view('students.detail', compact("student"));
     }
 
@@ -58,15 +57,18 @@ class StudentController extends Controller
             'age'=>'required'
         ]);
         $res = Student::find($id);
-        Student::find($id)->update($request->all());
-        $r = Study::where('id_student', $id)->get();
-        //$n = count($r);
-        $r[0]->id_grade = $request->id_grade;
-        $r[0]->update();
+        $res->update($request->all());
+        //$r = Study::where('id_student', $id)->get();
+        //$r[0]->id_grade = $request->id_grade;
+        //$r[0]->update();
         /*$res->name = $request->name;
         $res->lastname = $request->lastname;
         $res->age = $request->age;*/
         //$res->update($request->all());
+        Study::create([
+            'id_student'=>$id,
+            'id_grade'=>$request->id_grade,
+        ]);
         if($res){
             return redirect()->route('students.edit', $id)->with('message', ['success' , 'Estudiante editado correctamente']);
         }
@@ -92,6 +94,18 @@ class StudentController extends Controller
         }
         else{
             return redirect()->route('students.index')->with('message', ['danger' , 'No se pudo eliminar el estudiante']);
+        }
+    }
+
+    public function destroyStudy($id){
+        $study = Study::find($id);
+        $student = Student::find($study->id_student);
+        $destroy = Study::destroy($study->id);
+        if ($destroy){
+            return redirect()->route('students.show', $student->id)->with('message', ['success' , 'Estudio (Study) eliminado correctamente']);
+        }
+        else{
+            return redirect()->route('students.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar el estudio (Study)']);
         }
     }
 }

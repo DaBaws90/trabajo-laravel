@@ -9,6 +9,8 @@
                 <hr />
                 @include('partials.errors')
 
+                <a class="btn btn-default pull-right" href="{{ route('students.index') }}">Volver atrás</a>
+
                 <form method="POST" action="{{ route('students.store') }}" role="form"> {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name" class="col-md-12 control-label">
@@ -32,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="grados" class="col-md-12">
+                        <label for="grados" class="col-md-12 control-label">
                             {{ __("Grado")}}
                         </label>
                         <select id="grados" class="form-control" name="id_grade">

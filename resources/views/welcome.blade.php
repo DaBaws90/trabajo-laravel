@@ -103,7 +103,6 @@
             <!-- @include("partials.login_link", ["message" => __("Inicie sesión para comenzar a gestionar los registros")]) -->
                     <p>Inicie sesión para comenzar a gestionar los registros</p>
                 @endauth
-                
             </div>
         </div>
     </body>
