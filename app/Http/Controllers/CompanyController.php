@@ -15,7 +15,10 @@ class CompanyController extends Controller
 
     public function show(Company $company){
         //$grades = Student::where('id',$student->id)->with('studies.grade')->get();
-        return view('companies.detail', compact("company"));
+        $petitionsFCT = Petition::where('id_company', $company->id)->where('type', 'FCT')->get();
+        $petitionsEmpleo = Petition::where('id_company', $company->id)->where('type', 'Empleo')->get();
+        $petitionsDUAL = Petition::where('id_company', $company->id)->where('type', 'DUAL')->get();
+        return view('companies.detail', compact("company", "petitionsFCT", "petitionsEmpleo", "petitionsDUAL"));
     }
 
     public function create(){
@@ -40,9 +43,9 @@ class CompanyController extends Controller
     }
 
     public function edit($id){
-        $student = Student::find($id);
+        $company = Company::find($id);
         $grades = Grade::all();
-        return view('students.editView', compact("student", "grades"));
+        return view('companies.editView', compact("company", "grades"));
     }
 
     public function update(Request $request, $id){
@@ -88,15 +91,15 @@ class CompanyController extends Controller
         }
     }
 
-    /*public function destroyPetition($id){
+    public function destroyPetition($id){
         $petition = Petition::find($id);
         $company = Company::find($petition->id_company);
-        $destroy = Petition::destroy($petition->id);
+        $destroy = Petition::destroy($id);
         if ($destroy){
-            return redirect()->route('companies.show', $student->id)->with('message', ['success' , 'Petición eliminada correctamente']);
+            return redirect()->route('companies.show', $company->id)->with('message', ['success' , 'Petición eliminada correctamente']);
         }
         else{
-            return redirect()->route('companies.show', $student->id)->with('message', ['danger' , 'No se pudo eliminar la petición']);
+            return redirect()->route('companies.show', $company->id)->with('message', ['danger' , 'No se pudo eliminar la petición']);
         }
-    }*/
+    }
 }

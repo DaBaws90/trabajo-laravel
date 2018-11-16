@@ -17,7 +17,7 @@
 
         <div style="margin-top:3%" class="panel panel-default">
             <div class="panel-heading panel-heading-post">
-                {{ __("Ciclos") }} : {{ $student->studies->count() }}
+                {{ __("Ciclos que cursa el alumno") }} : {{ $student->studies->count() }}
             </div>
             <div class="panel-body">
                 @forelse($student->studies as $study)

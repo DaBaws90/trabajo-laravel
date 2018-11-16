@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Route::resource('studies', 'StudyController'); No fue necesario finalmente
 
     //Empresas
-    Route::get('companies/{id}/delete', 'CompanyController@destroyPetition')->name('deletePetition');
+    Route::delete('companies/{id}/delete', 'CompanyController@destroyPetition')->name('deletePetition');
     Route::resource('companies', 'CompanyController');
     /*Route::get('/companies', 'CompanyController@index');
     Route::post('/companies', 'CompanyController@store');
