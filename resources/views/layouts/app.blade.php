@@ -31,7 +31,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Escuela empresa') }}
+                        {{-- {{ config('app.name', 'Home') }} --}}
+                        {{ config('app-name', 'Home') }}
                     </a>
                 </div>
 
@@ -39,8 +40,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a class="nav-item nav-link" href="{{ route('students.index') }}">Estudiantes</a></li>
-                        <li><a class="nav-item nav-link" href="#">Empresas</a></li>
-                        <li><a class="nav-item nav-link disabled" href="#">Disabled</a></li>
+                        <li><a class="nav-item nav-link" href="{{ route('companies.index') }}">Empresas</a></li>
+                        <li><a class="nav-item nav-link" href="{{ route('listGrades') }}">Ciclos</a></li>
+                        <li><a class="nav-item nav-link" href="{{ route('listPetitions') }}">Peticiones</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -92,73 +94,5 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     
-<script type="text/javascript">
-
-    $(document).ready(function () {
-
-        $('[data-toggle=confirmation]').confirmation({
-
-            rootSelector: '[data-toggle=confirmation]',
-
-            onConfirm: function (event, element) {
-
-                element.trigger('confirm');
-
-            }
-
-        });
-
-
-        $(document).on('confirm', function (e) {
-
-            var ele = e.target;
-
-            e.preventDefault();
-
-
-            $.ajax({
-
-                url: ele.href,
-
-                type: 'DELETE',
-
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-
-                success: function (data) {
-
-                    if (data['success']) {
-
-                        $("#" + data['tr']).slideUp("slow");
-
-                        alert(data['success']);
-
-                    } else if (data['error']) {
-
-                        alert(data['error']);
-
-                    } else {
-
-                        alert('Whoops Something went wrong!!');
-
-                    }
-
-                },
-
-                error: function (data) {
-
-                    alert(data.responseText);
-
-                }
-
-            });
-
-
-            return false;
-
-        });
-
-    });
-
-</script>
 </body>
 </html>

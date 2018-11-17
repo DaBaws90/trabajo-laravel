@@ -23,7 +23,7 @@ class PetitionController extends Controller
             'id_company'=>'required',
             'id_grade'=>'required',
             'type'=>'required',
-            'n_students'=>'required'
+            'n_students'=>'required|min:1'
             
         ], [
            // "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
