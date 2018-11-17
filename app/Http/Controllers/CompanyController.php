@@ -5,6 +5,7 @@ namespace escuelaempresa\Http\Controllers;
 use Illuminate\Http\Request;
 use escuelaempresa\Company;
 use escuelaempresa\Petition;
+use escuelaempresa\Grade;
 
 class CompanyController extends Controller
 {
@@ -33,7 +34,7 @@ class CompanyController extends Controller
             'cp'=>'required'
         ]);
         $res = Company::create($request->all());
-        $company = Company::latest()->first();
+        // $company = Company::latest()->first();
         if ($res){
             return redirect()->route('companies.index')->with('message', ['success' , 'Empresa creada correctamente']);
         }
