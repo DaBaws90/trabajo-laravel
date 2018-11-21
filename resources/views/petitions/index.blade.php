@@ -56,17 +56,17 @@
                 </div>
 
                 <div class="form-group">
-                        <label for="grados" class="col-md-12">
-                            {{ __("Grado")}}
-                        </label>
-                        <select id="grados" class="form-control" name="id_grade">
-                        @forelse($grades as $grade)
-                            <option value="{{ $grade->id }}">{{ $grade->name }}</option>
-                        @empty
-                            {{ __("No hay ningún grado registrado en este momento")}}
-                        @endforelse
-                        </select>
-                    </div>
+                    <label for="grados" class="col-md-12">
+                        {{ __("Grado")}}
+                    </label>
+                    <select id="grados" class="form-control" name="id_grade">
+                    @forelse($grades as $grade)
+                        <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                    @empty
+                        {{ __("No hay ningún grado registrado en este momento")}}
+                    @endforelse
+                    </select>
+                </div>
 
                 
                 <button style="margin:3% auto;display:block"  type="submit" name="addPetition" class="btn btn-default"> 

@@ -21,9 +21,9 @@
             </div>
             <div class="panel-body">
                 @forelse($student->studies as $study)
-                <div style="margin:3% 0" class="row">
+                <div style="margin:2% 0" class="row">
                     <div class="col-md-6">
-                        {{ __("Ciclo") }} : <a href="grades/{{$study->grade->id}}">{{ $study->grade->name }}</a>
+                        {{ __("Ciclo") }} : <a href="../grades/{{$study->grade->id}}">{{ $study->grade->name }}</a>
                     </div>
                     <div class="col-md-6">
                         <form action="{{ route('deleteStudy',['id'=> $study->id]) }}" method="POST">

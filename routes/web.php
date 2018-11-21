@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Route::resource('studies', 'StudyController'); No fue necesario finalmente
 
     //Empresas
-    Route::delete('companies/{id}/delete', 'CompanyController@destroyPetition')->name('deletePetition');
+    Route::delete('companies/{petition}/delete', 'CompanyController@destroyPetition')->name('deletePetition');
     Route::resource('companies', 'CompanyController');
     /*Route::get('/companies', 'CompanyController@index');
     Route::post('/companies', 'CompanyController@store');
@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/companies/delete/{company}', 'CompanyController@delete')->name('deleteCompany');*/
 
     //Ciclos
+    Route::post('/grades/{type}/{grade}/filter', 'GradeController@searchType')->name('filterPetitions');
+    Route::post('/grades/{petition}/{grade}/delete', 'GradeController@destroyPetition')->name('deletePetition2');
     Route::get('/grades', 'GradeController@index')->name("listGrades");
     Route::post('/grades', 'GradeController@store')->name("createGrade");
     Route::get('/grades/{grade}', 'GradeController@details')->name('details');
@@ -57,11 +59,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
 
      //Peticiones
+     Route::post('/petitions', 'PetitionController@listDates')->name("listDates");
      Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
      Route::post('/petitions', 'PetitionController@store')->name("createPetition");
      Route::get('/petitions/delete/{petition}', 'PetitionController@delete')->name('deletePetition');
      
-
 });
 
 /*Route::get('/students', function(){

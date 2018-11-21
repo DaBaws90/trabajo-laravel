@@ -16,6 +16,11 @@ class PetitionController extends Controller
         return view('petitions.index',compact('petitions','grades'));
     }
 
+    public function listDates(Request $request){
+        $from = $request->from;
+        $to = $request->to;
+        return view('petitions.dates');
+    }
     
 
     public function store(){
