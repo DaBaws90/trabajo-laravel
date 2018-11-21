@@ -22,7 +22,7 @@
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"FCT", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
-                        <button class="btn btn-primary btn-xs pull-right" type="submit">Listar</button>
+                        <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"DUAL", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
-                        <button class="btn btn-primary btn-xs pull-right" type="submit">Listar</button>
+                        <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"Empleo", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
-                        <button class="btn btn-primary btn-xs pull-right" type="submit">Listar</button>
+                        <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
             </div>

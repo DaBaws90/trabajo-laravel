@@ -7,7 +7,10 @@
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
-                <a href="grades/{{ $grade->id }}"> Nombre del ciclo: {{ $grade->name }} <br> Curso: {{ $grade->level }} </a>
+                {{ __("Nombre del ciclo: ") }} : <a href="grades/{{ $grade->id }}">{{ $grade->name }}</a>
+            </div>
+            <div class="panel-body">
+                {{ __("Curso") }} : {{ $grade->level }} 
                 <a href="{{ route('deleteGrade', $grade->id) }}" class="pull-right"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>

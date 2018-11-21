@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -29,7 +29,7 @@
                         </tr>
                     @endforelse
                 </table>
-                <button class="btn btn-block btn-primary">Generar PDF</button>
+                {{-- <button class="btn btn-block btn-primary">Generar PDF</button> --}}
             </div>
 
         </div>

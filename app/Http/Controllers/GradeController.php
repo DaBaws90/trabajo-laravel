@@ -5,6 +5,8 @@ namespace escuelaempresa\Http\Controllers;
 use Illuminate\Http\Request;
 use escuelaempresa\Grade;
 use escuelaempresa\Petition;
+// use Barryvdh\DomPDF\Facade as PDF;
+use PDF;
 
 
 class GradeController extends Controller
@@ -45,8 +47,11 @@ class GradeController extends Controller
 
     public function searchType($type, Grade $grade){
         $results = Petition::where('id_grade', $grade->id)->where('type', $type)->get();
+        $pdf = PDF::loadView('grades.list', compact("results"));
+
+        return $pdf->download('list.pdf');
         // dd($results);
-        return view('grades.list', compact("results"));
+        // return view('grades.list', compact("results"));
     }
 
     public function editView(Grade $grade){
