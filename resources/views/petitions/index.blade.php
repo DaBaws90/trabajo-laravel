@@ -40,7 +40,15 @@
                     <label for="type" class="col-md-12 control-label"> 
                         {{ __("Tipo de Peticion")}}
                     </label> 
-                    <input id="type" class="form-control" name="type" value="{{ old('type') }}" />
+                    
+                    <select id="type" class="form-control" name="type">
+                        
+                            <option value="DUAL">DUAL</option>
+                            <option value="FCT">FCT</option>
+                            <option value="TRABAJO">TRABAJO</option>
+
+                                                    
+                        </select>
                 </div>
                 <div class="form-group"> 
                     <label for="id_company" class="col-md-12 control-label"> 
