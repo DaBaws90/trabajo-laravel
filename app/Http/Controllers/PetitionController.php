@@ -31,7 +31,7 @@ class PetitionController extends Controller
     public function editView(Petition $petition){
         $grades = Grade::all();
         $companies = Company::all();
-        return view('petitions.editView', compact('petitions','grades','companies'));
+        return view('petitions.editView', compact('petition','grades','companies'));
     }
 
     public function editPetition(Petition $petition){

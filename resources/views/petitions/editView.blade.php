@@ -5,7 +5,7 @@
     <div style="margin:0 auto" class="row">
         <div style="left:15%"class="col-md-8 offset-md-2">
             @include('partials.errors')
-            <form method="POST" action="petitions"> {{ csrf_field() }}
+            <form method="POST" action="{{ route('editPetition', $petition->id) }}"> {{ csrf_field() }}
                 <div class="form-group"> 
                     <label for="n_students" class="col-md-12 control-label"> 
                         {{ __("Alumnos requeridos") }} 
@@ -61,7 +61,7 @@
                     <button  style="margin:5% auto;display:block" type="submit" name="editPetition" class="btn btn-default"> 
                         {{ __("Editar Peticion") }} 
                     </button>
-           
+            </form>
             
         </div>
     </div>
