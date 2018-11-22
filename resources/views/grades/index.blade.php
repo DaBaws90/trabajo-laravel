@@ -42,7 +42,15 @@
                     <label for="level" class="col-md-12 control-label"> 
                         {{ __("Curso")}}
                     </label> 
-                    <input id="level" class="form-control" name="level" value="{{ old('level') }}" />
+                    
+                    <select id="level" class="form-control" name="level">
+                        
+                            <option value="FPB">FPB</option>
+                            <option value="CFGM">CFGM</option>
+                            <option value="CFGS">CFGS</option>
+
+                                                    
+                        </select>
                 </div>
                 
                 <button style="margin:3% auto;display:block"  type="submit" name="addGrade" class="btn btn-default"> 
