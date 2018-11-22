@@ -112,9 +112,9 @@
     </div>
 </div>
 
-<div class="row">
+<div style="margin-bottom:3%" class="row">
     <div class="col-md-8 col-md-offset-2">
-        <a href="{{ route('listGrades') }}" class="btn btn-info pull-left">
+        <a href="{{ route('listGrades') }}" class="btn btn-default pull-left">
             {{ __("Volver atrás") }}
         </a>
         <a href="{{ route('editViewGrades', $grade->id) }}" class="btn btn-primary pull-right">
