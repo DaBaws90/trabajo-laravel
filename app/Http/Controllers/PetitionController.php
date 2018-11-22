@@ -6,20 +6,65 @@ use Illuminate\Http\Request;
 use escuelaempresa\Student;
 use escuelaempresa\Grade;
 use escuelaempresa\Petition;
+use escuelaempresa\Company;
 
 class PetitionController extends Controller
 {
     public function index(){
         $petitions = Petition::latest()->paginate(5);
         $grades = Grade::all();
+        $companies = Company::all();
       // dd($petitions);
-        return view('petitions.index',compact('petitions','grades'));
+        return view('petitions.index',compact('petitions','grades','companies'));
     }
 
     public function listDates(Request $request){
         $from = $request->from;
         $to = $request->to;
         return view('petitions.dates');
+    }
+
+    public function detailView(Petition $petition){
+        return view('petitions.detail', compact("petition"));
+    }
+
+    public function editView(Petition $petition){
+        $grades = Grade::all();
+        $companies = Company::all();
+        return view('petitions.editView', compact('petitions','grades','companies'));
+    }
+
+    public function editPetition(Petition $petition){
+        $this->validate(request(),[
+            'id_company'=>'required',
+            'id_grade'=>'required',
+            'type'=>'required',
+            'n_students'=>'required|min:1'
+            
+        ], [
+           
+        ]);       
+        
+
+        
+
+        $res = Petition::find($petition->id);
+        //$petition=Petition::latest()->first();
+        $res->id_company = request()->id_company;
+        $res->id_grade = request()->id_grade;
+        $res->type = request()->type;
+        $res->n_students = request()->n_students;
+
+        
+        $res->save();
+        if ($res){
+            return back()->with('message', ['success' , 'Peticion creada correctamente']);
+        }
+        else{
+            return back()->with('message', ['danger' , 'No se pudo crear la peticion']);
+        }
+
+
     }
     
 
@@ -31,7 +76,7 @@ class PetitionController extends Controller
             'n_students'=>'required|min:1'
             
         ], [
-           // "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
+           
         ]);       
         
 

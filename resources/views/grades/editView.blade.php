@@ -19,7 +19,15 @@
                         <label for="level" class="col-md-12 control-label"> 
                             {{ __("Curso")}}
                         </label> 
-                        <input id="level" class="form-control" name="level" value="{{ old('level', $grade->level) }}" />
+                        
+                        <select id="level" class="form-control" name="level">
+                        
+                            <option value="FPB">FPB</option>
+                            <option value="CFGM">CFGM</option>
+                            <option value="CFGS">CFGS</option>
+
+                                                    
+                        </select>
                     </div>
 
                    <a href="{{ route('listGrades') }}" class="btn btn-info pull-left">

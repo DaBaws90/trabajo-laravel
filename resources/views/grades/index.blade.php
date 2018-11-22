@@ -11,7 +11,7 @@
             </div>
             <div class="panel-body">
                 {{ __("Curso") }} : {{ $grade->level }} 
-                <a href="{{ route('deleteGrade', $grade->id) }}" class="pull-right"><i class="far fa-trash-alt"></i></a>
+                <a href="{{ route('deleteGrade', $grade->id) }}" class="btn btn-danger btn-xs pull-right"><i class="far fa-trash-alt"></i></a>
             </div>
         </div>
         @empty

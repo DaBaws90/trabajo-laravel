@@ -4,13 +4,39 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h1 style="margin: 2% 0 5% 0" class="text-center text-mute"> {{ __("Peticiones de Alumnos") }} </h1>
+        
+        
+        
+        
+        
+        
         @forelse($petitions as $petition)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
-                <a href="petitions/{{ $petition->id }}"> Identificador de la Peticion: {{ $petition->id }} <br> Alumnos Requeridos: {{ $petition->n_students }} 
-               <br> Tipo de petición: {{ $petition->type }} <br> Identificador de Empresa: {{ $petition->id_company }} <br> Identificador de Ciclo: {{ $petition->id_grade }}</a>
-                <a href="{{ route('deleteGrade', $petition->id) }}" class="pull-right"><i class="far fa-trash-alt"></i></a>
+                <a href="petitions/detail/{{ $petition->id }}">              
+                <div class="panel-heading panel-heading-forum">
+                {{ __("Nombre de la Empresa: ") }} {{ $petition->company->name }}
+                <a href="{{ route('deletePetition', $petition->id) }}" class="btn btn-danger btn-xs pull-right"><i class="far fa-trash-alt"></i></a>
+                </div>
+
+                <div class="panel-heading panel-heading-forum">
+                {{ __("Nombre del Ciclo: ") }} {{ $petition->grade->name }}
+                </div>
+
+                <div class="panel-heading panel-heading-forum">
+                {{ __("Tipo de Petición: ") }} {{ $petition->type }} 
+                </div>
+
+                <div class="panel-heading panel-heading-forum">
+                {{ __("Alumnos Requeridos: ") }} {{ $petition->n_students }} 
+                </div>
+               
+                
+            
+            </a>                
+               
             </div>
+                               
         </div>
         @empty
         <div class="alert alert-danger">
@@ -45,33 +71,36 @@
                         
                             <option value="DUAL">DUAL</option>
                             <option value="FCT">FCT</option>
-                            <option value="TRABAJO">TRABAJO</option>
+                            <option value="Empleo">Empleo</option>
 
                                                     
                         </select>
                 </div>
-                <div class="form-group"> 
-                    <label for="id_company" class="col-md-12 control-label"> 
-                        {{ __("Identificador de Empresa")}}
-                    </label> 
-                    <input id="id_company" class="form-control" name="id_company" value="{{ old('id_company') }}" />
-                </div>
-                <div class="form-group"> 
-                    <label for="id_grade" class="col-md-12 control-label"> 
-                        {{ __("Identificador de ciclo")}}
-                    </label> 
-                    <input id="id_grade" class="form-control" name="id_grade" value="{{ old('id_grade') }}" />
-                </div>
+                
 
                 <div class="form-group">
-                    <label for="grados" class="col-md-12">
-                        {{ __("Grado")}}
+                    <label for="company" class="col-md-12">
+                        {{ __("Empresas")}}
                     </label>
-                    <select id="grados" class="form-control" name="id_grade">
+                    <select id="id_company" class="form-control" name="id_company">
+                    @forelse($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->name }}</option>
+                    @empty
+                        {{ __("No hay ningua empresa registrada en este momento")}}
+                    @endforelse
+                    </select>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="grades" class="col-md-12">
+                        {{ __("Ciclo")}}
+                    </label>
+                    <select id="id_grade" class="form-control" name="id_grade">
                     @forelse($grades as $grade)
                         <option value="{{ $grade->id }}">{{ $grade->name }}</option>
                     @empty
-                        {{ __("No hay ningún grado registrado en este momento")}}
+                        {{ __("No hay ningún ciclo registrado en este momento")}}
                     @endforelse
                     </select>
                 </div>

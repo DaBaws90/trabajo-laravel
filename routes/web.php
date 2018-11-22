@@ -63,6 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
      Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
      Route::post('/petitions', 'PetitionController@store')->name("createPetition");
      Route::get('/petitions/delete/{petition}', 'PetitionController@delete')->name('deletePetition');
+     Route::get('/petitions/detail/{petition}', 'PetitionController@detailView')->name("detailPetitions");
+     Route::get('/petitions/edit/{petition}', 'PetitionController@editView')->name('editViewPetition');
+     Route::post('/petitions/edit/{petition}', 'PetitionController@editPetition')->name('editPetition');
      
 });
 

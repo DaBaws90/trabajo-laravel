@@ -61,7 +61,7 @@ class GradeController extends Controller
     public function editGrade(Grade $grade){
         $this->validate(request(),[
             'name'=>'required|max:75',
-            'level'=>['required','regex:^[1-3]^']
+            'level'=>'required'
         ], [
             "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
         ]);
