@@ -19,12 +19,14 @@
         <div style="margin-top:3%" class="panel panel-default">
             <div class="panel-heading panel-heading-post">
                 {{ __("Peticiones de FCT") }} : {{ $petitionsFCT->count() }} 
+                @if($petitionsFCT->count())
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"FCT", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
+                @endif
             </div>
             <div class="panel-body">
                 @forelse($petitionsFCT as $petition)
@@ -50,12 +52,14 @@
         <div style="margin-top:3%" class="panel panel-default">
             <div class="panel-heading panel-heading-post">
                 {{ __("Peticiones de DUAL") }} : {{ $petitionsDUAL->count() }} 
+                @if($petitionsDUAL->count())
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"DUAL", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
+                @endif
             </div>
             <div class="panel-body">
                 @forelse($petitionsDUAL as $petition)
@@ -81,12 +85,14 @@
         <div style="margin-top:3%" class="panel panel-default">
             <div class="panel-heading panel-heading-post">
                 {{ __("Peticiones de Empleo") }} : {{ $petitionsEmpleo->count() }} 
+                @if($petitionsEmpleo->count())
                 <div class="col-md-1 pull-right">
                     <form action="{{ route('filterPetitions', ['type'=>"Empleo", 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
                 </div>
+                @endif
             </div>
             <div class="panel-body">
                 @forelse($petitionsEmpleo as $petition)
