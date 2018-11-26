@@ -5,6 +5,10 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <h1 class="text-center text-muted"> {{ __("Detalles de la Petición: :id", ['id' => $petition->id]) }} </h1>
+        <div style="height: 40px;margin: 0 0 2% 0">
+            <a href="{{ route('listadosFechaPetition') }}" class="btn btn-primary pull-left">SOLICITUDES POR FECHA</a>
+            <a href="{{ route('listadosPetition') }}" class="btn btn-primary pull-right">SOLICITUDES POR TIPO</a>
+        </div>
 
         <div style="margin-top:4%" class="panel panel-default">
             <div class="panel-heading panel-heading-post">

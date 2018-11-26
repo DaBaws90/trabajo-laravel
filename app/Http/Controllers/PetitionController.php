@@ -7,6 +7,7 @@ use escuelaempresa\Student;
 use escuelaempresa\Grade;
 use escuelaempresa\Petition;
 use escuelaempresa\Company;
+use PDF;
 
 class PetitionController extends Controller
 {
@@ -25,7 +26,31 @@ class PetitionController extends Controller
     }
 
     public function detailView(Petition $petition){
-        return view('petitions.detail', compact("petition"));
+       // $grade = Grade::all();        
+       // $petitionsFCT = Petition::where(['id_grade'=> $grade->id, 'type'=> "FCT"])->with('company')->get();        
+        //$petitionsDUAL = Petition::where(['id_grade'=> $grade->id, 'type'=> "DUAL"])->with('company')->get();
+        //$petitionsEmpleo = Petition::where(['id_grade'=> $grade->id, 'type'=> "Empleo"])->with('company')->get();
+       // return view('petitions.detail', compact("petition","grade", "petitionsFCT", "petitionsDUAL", "petitionsEmpleo"));
+        
+
+
+      return view('petitions.detail', compact("petition"));
+    }
+
+    public function listados(Grade $grade){
+             
+        $PFCT = Petition::where(['id_grade'=> $grade->id, 'type'=> "FCT"])->with('company')->get();        
+        $PDUAL = Petition::where(['id_grade'=> $grade->id, 'type'=> "DUAL"])->with('company')->get();
+        $PEmpleo = Petition::where(['id_grade'=> $grade->id, 'type'=> "Empleo"])->with('company')->get();
+       return view('petitions.listados', compact("grade", "PFCT", "PDUAL", "PEmpleo"));
+    }
+
+    public function listadosFecha(Grade $grade){
+             
+        $PFCT = Petition::where(['id_grade'=> $grade->id, 'type'=> "FCT"])->with('company')->get();        
+        $PDUAL = Petition::where(['id_grade'=> $grade->id, 'type'=> "DUAL"])->with('company')->get();
+        $PEmpleo = Petition::where(['id_grade'=> $grade->id, 'type'=> "Empleo"])->with('company')->get();
+       return view('petitions.listadosfecha', compact("grade", "PFCT", "PDUAL", "PEmpleo"));
     }
 
     public function editView(Petition $petition){

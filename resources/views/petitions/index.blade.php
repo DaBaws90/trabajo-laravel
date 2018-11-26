@@ -3,7 +3,8 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 style="margin: 2% 0 5% 0" class="text-center text-mute"> {{ __("Peticiones de Alumnos") }} </h1>
+        
+        
         
         
         
@@ -106,7 +107,7 @@
                 </div>
 
                 
-                <button style="margin:3% auto;display:block"  type="submit" name="addPetition" class="btn btn-default"> 
+                <button style="margin:3% auto;display:block"  type="submit" name="addPetition" class="btn btn-primary"> 
                     {{ __("Añadir Peticion") }} 
                 </button>
             </form>
