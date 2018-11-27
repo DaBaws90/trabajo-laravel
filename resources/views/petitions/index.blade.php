@@ -3,9 +3,8 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        
-        
-        
+    <h1 style="margin:2% 0 5% 8%" class="text-center text-mute"> {{ __("Solicitudes de Alumnos") }} </h1>    
+             
         
         
         

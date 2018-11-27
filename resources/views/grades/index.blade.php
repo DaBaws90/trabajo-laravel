@@ -9,7 +9,7 @@
                 <button class="btn btn-primary pull-right" type="submit">PDF por tipo</button>
             </form>
         </div>
-        <h1 style="margin:2% 0 5% 8%" class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
+        <h1 style="margin:2% 0 5% 8%" class="text-center text-mute"> {{ __("Ciclos de Formacion Profesional") }} </h1>
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
