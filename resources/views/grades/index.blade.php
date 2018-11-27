@@ -3,15 +3,35 @@
 @section('content')
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 style="margin: 2% 0 5% 0" class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
+        <div style="margin-top:6%" class="pull-right">
+            <form action="{{ route('overallList') }}" method="POST">
+            {{csrf_field()}}
+                <button class="btn btn-primary pull-right" type="submit">PDF por tipo</button>
+            </form>
+        </div>
+        <h1 style="margin:2% 0 5% 8%" class="text-center text-mute"> {{ __("Ciclos de FORMACION PROFESIONAL") }} </h1>
         @forelse($grades as $grade)
         <div class="panel panel-default">
             <div class="panel-heading panel-heading-forum">
                 {{ __("Nombre del ciclo: ") }} : <a href="grades/{{ $grade->id }}">{{ $grade->name }}</a>
             </div>
             <div class="panel-body">
-                {{ __("Curso") }} : {{ $grade->level }} 
-                <a href="{{ route('deleteGrade', $grade->id) }}" class="btn btn-danger btn-xs pull-right"><i class="far fa-trash-alt"></i></a>
+                {{ __("Curso") }} : {{ $grade->level }}
+                @if($grade->petitions->count() == 0 && $grade->studies->count() == 0)
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ __("No hay peticiones ni alumnos vinculados. ¿Desea eliminar el ciclo?")}}
+                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ route('deleteGrade', $grade->id) }}" method="POST">
+                            {{csrf_field()}}
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button onclick="return confirm('Estás seguro?')" class="btn btn-danger btn-xs pull-right" type="submit"><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                </div>
+                {{-- <a href="{{ route('deleteGrade', $grade->id) }}" class="btn btn-danger btn-xs pull-right"><i class="far fa-trash-alt"></i></a> --}}
+                @endif
             </div>
         </div>
         @empty

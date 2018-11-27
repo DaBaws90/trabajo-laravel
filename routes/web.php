@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/companies/delete/{company}', 'CompanyController@delete')->name('deleteCompany');*/
 
     //Ciclos
+    Route::post('/grades/overallList', 'GradeController@overallList')->name('overallList');
     Route::post('/grades/{type}/{grade}/filter', 'GradeController@searchType')->name('filterPetitions');
     Route::post('/grades/{petition}/{grade}/delete', 'GradeController@destroyPetition')->name('deletePetition2');
     Route::get('/grades', 'GradeController@index')->name("listGrades");
@@ -56,9 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/grades/{grade}', 'GradeController@details')->name('details');
     Route::get('/grades/edit/{grade}', 'GradeController@editView')->name('editViewGrades');
     Route::post('/grades/edit/{grade}', 'GradeController@editGrade')->name('editGrade');
-    Route::get('/grades/delete/{grade}', 'GradeController@delete')->name('deleteGrade');
+    Route::delete('/grades/{id}/delete', 'GradeController@delete')->name('deleteGrade');
 
      //Peticiones
+     Route::post('/petitions/detail', 'PetitionController@listados')->name('listadosPetition');
+
      Route::post('/petitions', 'PetitionController@listDates')->name("listDates");
      Route::get('/petitions', 'PetitionController@index')->name("listPetitions");
      Route::post('/petitions', 'PetitionController@store')->name("createPetition");
@@ -66,12 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
      Route::get('/petitions/detail/{petition}', 'PetitionController@detailView')->name("detailPetitions");
      Route::get('/petitions/edit/{petition}', 'PetitionController@editView')->name('editViewPetition');
      Route::post('/petitions/edit/{petition}', 'PetitionController@editPetition')->name('editPetition');
-     Route::get('/petitions/listados/', 'PetitionController@listados')->name('listadosPetition');
+    //  Route::get('/petitions/listados/', 'PetitionController@listados')->name('listadosPetition');
      Route::get('/petitions/listadosfecha/', 'PetitionController@listadosFecha')->name('listadosFechaPetition');
      
 });
-
-/*Route::get('/students', function(){
-    return view('students');
-});*/
-

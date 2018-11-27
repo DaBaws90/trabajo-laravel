@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-md-7">
                             <button style="display:block" type="submit" name="editCompany" class="btn btn-primary"> 
-                                {{ __("Editar eempresa") }} 
+                                {{ __("Editar empresa") }} 
                             </button>
                         </div>
                         

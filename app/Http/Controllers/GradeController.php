@@ -22,8 +22,6 @@ class GradeController extends Controller
             'name'=>'required|max:75',
             'level'=>'required'
             
-        ], [
-            "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
         ]);       
 
 
@@ -50,8 +48,17 @@ class GradeController extends Controller
         $pdf = PDF::loadView('grades.list', compact("results"));
 
         return $pdf->download('list.pdf');
+    }
+
+    public function overallList(){
+        $results = Grade::with('petitions')->get();
         // dd($results);
-        // return view('grades.list', compact("results"));
+        // $PetitionsFCT = Petition::where('type', "FCT")->with('grade')->get();
+        // $PetitionsDUAL = Petition::where('type', "DUAL")->with('grade')->get();
+        // $PetitionsEmpleo = Petition::where('type', "Empleo")->with('grade')->get();
+        $pdf = PDF::loadView('grades.typePetitions', compact("results"));
+
+        return $pdf->download('listPerType.pdf');
     }
 
     public function editView(Grade $grade){
@@ -62,8 +69,6 @@ class GradeController extends Controller
         $this->validate(request(),[
             'name'=>'required|max:75',
             'level'=>'required'
-        ], [
-            "level.digits" => __("Introduce si es de 1, 2 o 3 curso")
         ]);
         $res = Grade::find($grade->id);
         $res->name = request()->name;
@@ -79,9 +84,9 @@ class GradeController extends Controller
       
     }
 
-    public function delete(Grade $grade){
+    public function delete($id){
         
-        $destroy = Grade::destroy($grade->id);
+        $destroy = Grade::destroy($id);
         if ($destroy){
             return back()->with('message', ['success' , 'Ciclo eliminado correctamente']);
         }

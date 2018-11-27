@@ -3,6 +3,17 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/app.css">
+    <style>
+      .table.table-dark td{
+        /* align-content: center;
+        text-align: center; */
+        width: 33%;
+      }
+      .table.table-dark th{
+        /* align-content: center;
+        text-align: center; */
+      }
+    </style>
   </head>
   <body>
       <div class="container">
