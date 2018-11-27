@@ -44,7 +44,7 @@
         </div>
         @endforelse
         
-        <!-- Navegación -->
+        
         <div style="text-align:center">
             @if($petitions->count())
                 {{$petitions->links()}}

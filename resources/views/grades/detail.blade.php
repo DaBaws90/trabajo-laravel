@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h1 class="text-center text-muted"> {{ __("Detalles del Ciclo ':name'", ['name' => $grade->name]) }} </h1>
+        <h1 class="text-center text-muted"> {{ __("Detalles del Ciclo: ':name'", ['name' => $grade->name]) }} </h1>
         <div class="clearfix"></div>
 
         <div style="margin-top:3%" class="panel panel-default">
@@ -21,7 +21,7 @@
                 {{ __("Peticiones de FCT") }} : {{ $petitionsFCT->count() }} 
                 @if($petitionsFCT->count())
                 <div class="col-md-1 pull-right">
-                    <form action="{{ route('filterPetitions', ['type'=>"FCT", 'grade'=>$grade->id]) }}" method="POST">
+                    <form action="{{ route('filterPetitions', ['type'=>'FCT', 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
@@ -54,7 +54,7 @@
                 {{ __("Peticiones de DUAL") }} : {{ $petitionsDUAL->count() }} 
                 @if($petitionsDUAL->count())
                 <div class="col-md-1 pull-right">
-                    <form action="{{ route('filterPetitions', ['type'=>"DUAL", 'grade'=>$grade->id]) }}" method="POST">
+                    <form action="{{ route('filterPetitions', ['type'=>'DUAL', 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
@@ -87,7 +87,7 @@
                 {{ __("Peticiones de Empleo") }} : {{ $petitionsEmpleo->count() }} 
                 @if($petitionsEmpleo->count())
                 <div class="col-md-1 pull-right">
-                    <form action="{{ route('filterPetitions', ['type'=>"Empleo", 'grade'=>$grade->id]) }}" method="POST">
+                    <form action="{{ route('filterPetitions', ['type'=>'Empleo', 'grade'=>$grade->id]) }}" method="POST">
                     {{csrf_field()}}
                         <button class="btn btn-primary btn-xs pull-right" type="submit">PDF</button>
                     </form>
