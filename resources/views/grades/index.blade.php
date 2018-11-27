@@ -6,7 +6,7 @@
         <div style="margin-top:6%" class="pull-right">
             <form action="{{ route('overallList') }}" method="POST">
             {{csrf_field()}}
-                <button class="btn btn-primary pull-right" type="submit">PDF por tipo</button>
+                <button class="btn btn-primary pull-right" type="submit">PDF - Tipos</button>
             </form>
         </div>
         <h1 style="margin:2% 0 5% 8%" class="text-center text-mute"> {{ __("Ciclos de Formacion Profesional") }} </h1>
@@ -73,7 +73,7 @@
                         </select>
                 </div>
                 
-                <button style="margin:3% auto;display:block"  type="submit" name="addGrade" class="btn btn-default"> 
+                <button style="margin:3% auto;display:block"  type="submit" name="addGrade" class="btn btn-primary"> 
                     {{ __("Añadir Ciclo") }} 
                 </button>
             </form>
