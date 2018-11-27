@@ -30,10 +30,10 @@
                         </select>
                     </div>
 
-                   <a href="{{ route('listGrades') }}" class="btn btn-info pull-left">
+                   <a href="{{ route('listGrades') }}" class="btn btn-default pull-left">
                         {{ __("Volver atrás") }}
                     </a>
-                    <button  style="margin:5% auto;display:block" type="submit" name="editGrade" class="btn btn-default"> 
+                    <button  style="margin:5% auto;display:block" type="submit" name="editGrade" class="btn btn-primary"> 
                         {{ __("Editar Ciclo") }} 
                     </button>
                 </form>
