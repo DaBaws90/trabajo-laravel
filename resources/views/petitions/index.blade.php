@@ -62,7 +62,7 @@
                     <label for="n_students" class="col-md-12 control-label"> 
                         {{ __("Alumnos requeridos") }} 
                     </label>
-                    <input id="n_students" class="form-control" name="n_students" value="{{ old('n_students') }}" /> </div>
+                    <input id="n_students" type="number" class="form-control" name="n_students" value="{{ old('n_students') }}" /> </div>
                 <div class="form-group"> 
                     <label for="type" class="col-md-12 control-label"> 
                         {{ __("Tipo de Peticion")}}
