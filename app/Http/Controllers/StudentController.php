@@ -28,7 +28,7 @@ class StudentController extends Controller
         $this->validate($request,[
             'name'=>'required|max:20',
             'lastname'=>'required|max:50',
-            'age'=>'required' // Controlar edad negativa
+            'age'=>'required|numeric|min:1' // Controlar edad negativa
         ]);
         $res = Student::create($request->all());
         $student = Student::latest()->first();
